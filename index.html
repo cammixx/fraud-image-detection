@@ -15,9 +15,14 @@
 
             <!-- Upload Form -->
             <form id="uploadForm" enctype="multipart/form-data" method="POST">
-                <div class="upload-area" onclick="document.getElementById('imageInput').click()">
+                <div class="upload-area" id="uploadBox">
                     <p class="text-muted">Click to upload an image</p>
                     <input type="file" id="imageInput" name="image" accept="image/*" hidden>
+                </div>
+
+                <!-- Image Preview (Thumbnail) -->
+                <div id="thumbnailContainer" class="text-center mt-3" style="display: none;">
+                    <img id="imagePreview" class="preview-thumbnail" onclick="openFullSizeImage()">
                 </div>
 
                 <!-- Submit Button -->
