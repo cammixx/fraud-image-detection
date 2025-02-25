@@ -2,16 +2,6 @@
     display: none; /* Hidden by default */
 }
 
-.preview-thumbnail {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-    cursor: pointer;
-    border: 2px solid #dee2e6;
-    transition: transform 0.2s;
-    display: none;
-
 .upload-container {
     max-width: 800px;
     margin: 2rem auto;
