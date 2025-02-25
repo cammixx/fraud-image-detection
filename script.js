@@ -10,6 +10,9 @@ document.getElementById("imageInput").addEventListener("change", function(event)
             const previewImg = document.getElementById("previewImg");
             previewImg.src = e.target.result;
             previewImg.classList.remove("d-none");
+            
+            // Enable Analyze button
+            document.getElementById("analyzeButton").disabled = false;
         };
         reader.readAsDataURL(file);
     }
@@ -24,6 +27,9 @@ document.getElementById("analyzeButton").addEventListener("click", function() {
 
     const formData = new FormData();
     formData.append("image", fileInput);
+
+    // Display loading message
+    document.getElementById("result").innerText = "Analyzing... Please wait.";
 
     fetch("/upload", {  // Ensure this matches the backend endpoint
         method: "POST",
