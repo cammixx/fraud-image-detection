@@ -1,14 +1,19 @@
 document.getElementById('imageInput').addEventListener('change', function(e) {
     const reader = new FileReader();
     reader.onload = function() {
+        const container = document.getElementById('thumbnailContainer');
         const preview = document.getElementById('imagePreview');
-        preview.src = reader.result;
+        
+        // Show container and preview
+        container.style.display = 'block';
         preview.style.display = 'block';
         
-        // Set full size preview source
+        preview.src = reader.result;
         document.getElementById('fullSizePreview').src = reader.result;
     }
-    reader.readAsDataURL(e.target.files[0]);
+    if (this.files[0]) {
+        reader.readAsDataURL(this.files[0]);
+    }
 });
 
 document.getElementById('uploadForm').addEventListener('submit', async function(e) {
