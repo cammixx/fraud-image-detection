@@ -4,10 +4,8 @@ document.getElementById('imageInput').addEventListener('change', function(e) {
         const container = document.getElementById('thumbnailContainer');
         const preview = document.getElementById('imagePreview');
         
-        // Show container and preview
+        // Show only the thumbnail container when image is loaded
         container.style.display = 'block';
-        preview.style.display = 'block';
-        
         preview.src = reader.result;
         document.getElementById('fullSizePreview').src = reader.result;
     }
