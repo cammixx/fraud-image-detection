@@ -10,7 +10,10 @@ document.getElementById("imageInput").addEventListener("change", function(event)
             const previewImg = document.getElementById("previewImg");
             previewImg.src = e.target.result;
             previewImg.classList.remove("d-none");
-            
+
+            // Store the full-size image in the modal
+            document.getElementById("fullSizeImage").src = e.target.result;
+
             // Enable Analyze button
             document.getElementById("analyzeButton").disabled = false;
         };
@@ -44,3 +47,13 @@ document.getElementById("analyzeButton").addEventListener("click", function() {
         document.getElementById("result").innerText = "Error processing the image.";
     });
 });
+
+// Open Full-Size Image in Modal
+function openFullSizeImage() {
+    document.getElementById("imageModal").style.display = "flex";
+}
+
+// Close Modal
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
