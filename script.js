@@ -13,9 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const container = document.getElementById('thumbnailContainer');
             const preview = document.getElementById('imagePreview');
 
-            // Ensure elements exist before modifying
             if (container && preview) {
-                container.style.display = 'block'; // Show thumbnail
+                container.style.display = 'block';
                 preview.src = reader.result;
                 document.getElementById('fullSizePreview').src = reader.result;
             }
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Handle Form Submission (Fake API Call for Now)
+    // Handle Form Submission and Redirect
     document.getElementById('uploadForm').addEventListener('submit', async function (e) {
         e.preventDefault();
 
@@ -34,29 +33,24 @@ document.addEventListener("DOMContentLoaded", function () {
         submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Analyzing...';
         submitButton.disabled = true;
 
-        // Simulated API call
+        // Simulated API call (Replace this with actual API fetch)
         const formData = new FormData(this);
+        // const response = await fetch('/api/analyze', { method: 'POST', body: formData });
+        // const result = await response.json();
+
+        // Simulated result for now
         const result = {
             is_fraud: Math.random() > 0.5,
             confidence: (Math.random() * 100).toFixed(2)
         };
 
-        const resultContainer = document.getElementById('resultContainer');
-        const resultText = document.getElementById('resultText');
+        // Store result data in sessionStorage (Temporary Data Storage)
+        sessionStorage.setItem("analysisResult", JSON.stringify(result));
 
-        // Ensure elements exist before modifying
-        if (resultContainer && resultText) {
-            resultContainer.style.display = 'block';
-            if (result.is_fraud) {
-                resultContainer.className = 'result-box bg-danger text-white';
-                resultText.textContent = `AI-generated (${result.confidence}% confidence)`;
-            } else {
-                resultContainer.className = 'result-box bg-success text-white';
-                resultText.textContent = `Authentic (${result.confidence}% confidence)`;
-            }
-        }
+        // Redirect to result page
+        window.location.href = "result.html"; // Ensure result.html exists
 
-        // Reset button state
+        // Reset button state (not needed if redirect happens)
         submitButton.innerHTML = 'Analyze Image';
         submitButton.disabled = false;
     });
