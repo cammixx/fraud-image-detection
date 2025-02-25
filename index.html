@@ -22,15 +22,21 @@
             Analyze Image
         </button>
 
-        <!-- Preview Image -->
+        <!-- Preview Image as Thumbnail -->
         <div id="imagePreview" class="mt-4 text-center">
-            <img id="previewImg" src="" alt="Uploaded Image" class="img-fluid d-none">
+            <img id="previewImg" src="" alt="Uploaded Image" class="img-thumbnail d-none" onclick="openFullSizeImage()">
         </div>
 
         <!-- Fixed Output -->
         <div id="result" class="text-center mt-3">
             Upload an image to check if it's AI-generated or not.
         </div>
+    </div>
+
+    <!-- Full Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="fullSizeImage">
     </div>
 
     <script src="script.js"></script>
